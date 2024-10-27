@@ -1,15 +1,69 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+abstract class Shape {
+    public void displayName() {
+        System.out.println("Class name: " + this.getClass().getSimpleName());
+    }
+    public abstract double calculateArea();
+    public abstract double calculatePerimeter();
+}
+
+class Rectangle extends Shape {
+    private double length;
+    private double height;
+
+    public Rectangle(double length, double breadth) {
+        this.length = length;
+        this.height = breadth;
+    }
+
+    // Implementacja metody obliczającej pole
+    @Override
+    public double calculateArea() {
+        return length * height;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 2 * (length + height);
+    }
+}
+
+class Triangle extends Shape {
+    private double a;
+    private double b;
+    private double c;
+
+    public Triangle(double sideA, double sideB, double sideC) {
+        this.a = sideA;
+        this.b = sideB;
+        this.c = sideC;
+    }
+
+    @Override
+    public double calculateArea() {
+        double semiPerimeter = calculatePerimeter() / 2;
+        return Math.sqrt(semiPerimeter * (semiPerimeter - a) * (semiPerimeter - b) * (semiPerimeter - c));
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return a + b + c;
+    }
+}
+
+class ShapeDescriber {
+    public static void describeShape(Shape shape) {
+        System.out.println("Area: " + shape.calculateArea());
+        System.out.println("Perimeter: " + shape.calculatePerimeter());
+    }
+}
+
 public class Main {
+
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome!");
-//test
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Shape rectangle = new Rectangle(5, 7);
+        Shape triangle = new Triangle(3, 2, 3);
+
+        ShapeDescriber.describeShape(rectangle);
+        ShapeDescriber.describeShape(triangle);
     }
 }
