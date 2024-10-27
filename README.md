@@ -1,3 +1,4 @@
+# https://github.com/Qba3/java-laby/blob/laby/lab1/README.md
 # Zad1
 Komenda i wynik:
 ```
