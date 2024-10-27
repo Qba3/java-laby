@@ -15,7 +15,6 @@ class Rectangle extends Shape {
         this.height = breadth;
     }
 
-    // Implementacja metody obliczającej pole
     @Override
     public double calculateArea() {
         return length * height;
